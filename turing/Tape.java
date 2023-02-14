@@ -1,4 +1,4 @@
-package turing;
+
 /*
  * Your task is to implement a Java class named Tape that represents a Turing Machine tape,
  *  which is a doubly-linked list of cells. 
@@ -9,66 +9,104 @@ package turing;
  */
 
 
-public class Tape {
-    private Cell currentCell;
+ package turing;
 
-    public Tape() {
-        Cell initialCell = new Cell();
-        initialCell.content = ' ';
-        currentCell = initialCell;
-    }
-
-    public Cell getCurrentCell() {
-        return currentCell;
-    }
-
-    public char getContent() {
-        return currentCell.content;
-    }
-
-    public void setContent(char ch) {
-        currentCell.content = ch;
-    }
-
-    public void moveLeft() {
-        if (currentCell.prev == null) {
-            Cell newCell = new Cell();
-            newCell.content = ' ';
-            newCell.next = currentCell;
-            currentCell.prev = newCell;
-        }
-        currentCell = currentCell.prev;
-    }
-
-    public void moveRight() {
-        if (currentCell.next == null) {
-            Cell newCell = new Cell();
-            newCell.content = ' ';
-            newCell.prev = currentCell;
-            currentCell.next = newCell;
-        }
-        currentCell = currentCell.next;
-    }
-
-    public String getTapeContents() {
-        StringBuilder sb = new StringBuilder();
-        Cell startCell = currentCell;
-        while (startCell.prev != null) {
-            startCell = startCell.prev;
-        }
-        while (startCell != null && startCell.content == ' ') {
-            startCell = startCell.next;
-        }
-        while (startCell != null) {
-            sb.append(startCell.content);
-            startCell = startCell.next;
-        }
-        while (sb.length() > 0 && sb.charAt(sb.length()-1) == ' ') {
-            sb.setLength(sb.length()-1);
-        }
-        return sb.toString();
-    }
-}
+ /**
+  * Represents a Turing Machine tape, which is a doubly-linked list of cells.
+  * Each cell contains a character and has pointers to the next and previous cells.
+  */
+ public class Tape {
+     private Cell currentCell;
+ 
+     /**
+      * Constructs a new tape with a single cell containing a blank space, and sets the current cell pointer to that cell.
+      */
+     public Tape() {
+         Cell initialCell = new Cell();
+         initialCell.content = ' ';
+         currentCell = initialCell;
+     }
+ 
+     /**
+      * Gets the current cell on the tape.
+      *
+      * @return The current cell.
+      */
+     public Cell getCurrentCell() {
+         return currentCell;
+     }
+ 
+     /**
+      * Gets the content of the current cell on the tape.
+      *
+      * @return The content of the current cell.
+      */
+     public char getContent() {
+         return currentCell.content;
+     }
+ 
+     /**
+      * Sets the content of the current cell on the tape.
+      *
+      * @param ch The character to set as the content of the current cell.
+      */
+     public void setContent(char ch) {
+         currentCell.content = ch;
+     }
+ 
+     /**
+      * Moves the current cell pointer one cell to the left on the tape, creating a new cell if necessary.
+      * If a new cell is created, its content is set to a blank space.
+      */
+     public void moveLeft() {
+         if (currentCell.prev == null) {
+             Cell newCell = new Cell();
+             newCell.content = ' ';
+             newCell.next = currentCell;
+             currentCell.prev = newCell;
+         }
+         currentCell = currentCell.prev;
+     }
+ 
+     /**
+      * Moves the current cell pointer one cell to the right on the tape, creating a new cell if necessary.
+      * If a new cell is created, its content is set to a blank space.
+      */
+     public void moveRight() {
+         if (currentCell.next == null) {
+             Cell newCell = new Cell();
+             newCell.content = ' ';
+             newCell.prev = currentCell;
+             currentCell.next = newCell;
+         }
+         currentCell = currentCell.next;
+     }
+ 
+     /**
+      * Gets the contents of the entire tape as a String, omitting leading and trailing blank spaces.
+      *
+      * @return The contents of the tape as a String.
+      */
+     public String getTapeContents() {
+         StringBuilder sb = new StringBuilder();
+         Cell startCell = currentCell;
+         while (startCell.prev != null) {
+             startCell = startCell.prev;
+         }
+         while (startCell != null && startCell.content == ' ') {
+             startCell = startCell.next;
+         }
+         while (startCell != null) {
+             sb.append(startCell.content);
+             startCell = startCell.next;
+         }
+         while (sb.length() > 0 && sb.charAt(sb.length()-1) == ' ') {
+             sb.setLength(sb.length()-1);
+         }
+         return sb.toString();
+     }
+ }
+ 
 /*
  * In this implementation, the Tape class has an instance variable currentCell that points to the current cell on the tape. The constructor creates an initial cell with a blank space and sets the current cell pointer to it.
 
