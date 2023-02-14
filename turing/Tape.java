@@ -1,6 +1,11 @@
 package turing;
 /*
- * Your task is to implement a Java class named Tape that represents a Turing Machine tape, which is a doubly-linked list of cells. Each cell contains a character and has pointers to the next and previous cells. The Tape class should include methods for getting and setting the content of the current cell, moving left and right along the tape (creating new cells if necessary), and getting the contents of the entire tape as a String. The Tape class should also have a constructor that creates a tape with a single cell containing a blank space, and sets the current cell pointer to that cell. You can test your implementation using the provided TestTape, TestTapeGUI, and TestTuringMachine programs.
+ * Your task is to implement a Java class named Tape that represents a Turing Machine tape,
+ *  which is a doubly-linked list of cells. 
+ *  Each cell contains a character and has pointers to the next and previous cells. 
+ * The Tape class should include methods for getting and setting the content of the current cell, moving left and right along the tape (creating new cells if necessary), and getting the contents of the entire tape as a String. 
+ * The Tape class should also have a constructor that creates a tape with a single cell containing a blank space, and sets the current cell pointer to that cell. 
+ * You can test your implementation using the provided TestTape, TestTapeGUI, and TestTuringMachine programs.
  */
 
 
